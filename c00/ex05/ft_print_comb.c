@@ -1,36 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/28 22:36:41 by seukim            #+#    #+#             */
+/*   Updated: 2025/10/28 22:36:41 by seukim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_print_comb(void)
+void	ft_print_comb(void)
 {
-    char hundreds_place;
-    char tens_place;
-    char ones_place;
+	char	a;
+	char	b;
+	char	c;
 
-    hundreds_place = '0';
-    while (hundreds_place <= '7')
-    {
-        tens_place = hundreds_place + 1;
-        while (tens_place <= '8')
-        {
-            ones_place = tens_place + 1;
-            while (ones_place <= '9')
-            {
-                write(1, &hundreds_place, 1);
-                write(1, &tens_place, 1);
-                write(1, &ones_place, 1);
-                if (!(hundreds_place == '7' && tens_place == '8' && ones_place == '9'))
-                    write(1, ", ", 2);
-                ones_place++;
-            }
-            tens_place++;
-        }
-        hundreds_place++;
-    }
+	a = '0' - 1;
+	while (++a <= '7')
+	{
+		b = a;
+		while (++b <= '8')
+		{
+			c = b;
+			while (++c <= '9')
+			{
+				write(1, &a, 1);
+				write(1, &b, 1);
+				write(1, &c, 1);
+				if (!(a == '7' && b == '8' && c == '9'))
+				{
+					write(1, ", ", 2);
+				}
+			}
+		}
+	}
 }
 
-int main()
+int	main(void)
 {
-    ft_print_comb();
-
-     return 0;
+	ft_print_comb();
+	return (0);
 }
