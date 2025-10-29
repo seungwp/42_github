@@ -1,3 +1,8 @@
 -R CheckForbiddenSourceHeader
 
 cc -Wall -Wextra -Werror
+
+// 가상환경 활성화
+source ~/venv_norminette/bin/activate
+// 가상환경 비활성화
+deactivate
