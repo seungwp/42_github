@@ -23,9 +23,8 @@ int	ft_strlen(char *str)
 }
 
 // #include <stdio.h>
-
 // int main(void)
 // {	
-// 	printf("Length: %d\n", ft_strlen("abcdef"));
+// 	printf("Length: %d\n", ft_strlen("abcde  f"));
 //  	return (0);
 // }

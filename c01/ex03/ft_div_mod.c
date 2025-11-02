@@ -17,16 +17,15 @@ void	ft_div_mod(int a, int b, int *div, int *mod)
 }
 
 // #include <stdio.h>
-
 // int	main(void)
 // {
 // 	int a = 10;
 // 	int b = 3;
-// 	int div;
-// 	int mod;
+// 	int pointed_to_by_div;
+// 	int pointed_to_by_mod;
 
-// 	ft_div_mod(a, b, &div, &mod);
+// 	ft_div_mod(a, b, &pointed_to_by_div, &pointed_to_by_mod);
 
-// 	printf("div = %d, mod = %d\n", div, mod);
+// 	printf("%d, %d\n", pointed_to_by_div, pointed_to_by_mod);
 // 	return (0);
 // }
