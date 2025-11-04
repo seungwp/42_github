@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 21:09:50 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/04 18:04:49 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/04 23:53:47 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
 
+	if (n == 0)
+		return (0);
 	i = 0;
-	while ((i < n) && (s1[i] != '\0') && (s2[i] != '\0'))
+	while ((i < n - 1) && (s1[i] != '\0') && (s2[i] != '\0'))
 	{
 		if (s1[i] != s2[i])
 		{
@@ -35,10 +37,10 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 //	char str3[] = "zebra";
 //	char str4[] = "zebra";
 //	char str5[] = "appleZZ";
-//	unsigned int n = 4;
+//	unsigned int n = 6;
 //	printf("%d\n", ft_strncmp(str1, str2, n));	// -1
 //	printf("%d\n", ft_strncmp(str3, str1, n));	// 25
 //	printf("%d\n", ft_strncmp(str3, str4, n));	// 0
-//	printf("%d\n", ft_strncmp(str1, str5, n));	// 0
+//	printf("%d\n", ft_strncmp(str1, str5, n));	// -90
 //	return (0);
 //}

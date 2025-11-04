@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 21:09:55 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/04 18:42:47 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/04 23:53:52 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 //#include <stdio.h>
 //int main(void)
 //{
-//	char dest[30] = "HELLO";
-//	char src[] = "abcdefg";
-//	printf("%s\n", ft_strncat(dest, src, 3));
+//	char dest1[30] = "HELLO";
+//	char src1[] = "ab";
+//	printf("%s\n", ft_strncat(dest1, src1, 3));
+//	char dest2[30] = "monday";
+//	char src2[] = "ABCDEFG";
+//	printf("%s\n", ft_strncat(dest2, src2, 4));
 //}
