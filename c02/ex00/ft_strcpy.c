@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:41 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/02 22:16:40 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/04 10:09:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	while (*src != '\0')
+	int	i;
+
+	i = 0;
+	while ((src[i]) != '\0')
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		dest[i] = src[i];
+		i++;
 	}
-	*dest = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
 // #include <stdio.h>
 // int main(void) 
 // {
-//     char source[] = "Hello! World!";
+//     char source[] = "안녕하세요!!";
 //     char destination[20];
 
 //     ft_strcpy(destination, source);
