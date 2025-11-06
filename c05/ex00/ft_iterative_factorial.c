@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 22:26:02 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/06 14:44:22 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:21:35 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_iterative_factorial(int nb)
 {
-	long	result;
+	int	result;
 
 	result = 1;
 	if (nb < 0)
