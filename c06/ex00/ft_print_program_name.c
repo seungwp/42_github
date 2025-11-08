@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:37:19 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/06 19:57:29 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/07 21:08:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (argc > 0)
@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 			write (1, &argv[0][i], 1);
 			i++;
 		}
+		write (1, "\n", 1);
 	}
 	return (0);
 }

@@ -3,10 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:37:22 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/06 18:37:23 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/07 21:07:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
+int	main(int argc, char *argv[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argc > i)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			write(1, &argv[i][j], 1);
+			j++;
+		}
+		write (1, "\n", 1);
+		i++;
+	}
+	return (0);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 17:42:15 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/03 20:26:06 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/07 13:32:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ char	*ft_strcapitalize(char *str)
 	return (str);
 }
 
-// #include <stdio.h>
-// int main(void)
-// {
-// 	char str1[] = "hi, how are you? 42words forty-two; fifty+and+one";
-// 	char str2[] = "hello world";
-// 	char str3[] = "abcABC abc"; 
-// 	printf("%s\n", ft_strcapitalize(str1));
-// 	printf("%s\n", ft_strcapitalize(str2));
-// 	printf("%s\n", ft_strcapitalize(str3));
-// }
+#include <stdio.h>
+int main(void)
+{
+	char str1[] = "hi, how are you? 42words forty-two; fifty+and+one";
+	char str2[] = "hello world";
+	char str3[] = "abcABC abc"; 
+	printf("%s\n", ft_strcapitalize(str1));
+	printf("%s\n", ft_strcapitalize(str2));
+	printf("%s\n", ft_strcapitalize(str3));
+}
