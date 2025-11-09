@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:37:22 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/07 21:07:46 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/09 15:41:49 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	while (argc > i)
 	{
 		j = 0;
-		while (argv[i][j])
+		while (argv[i][j] != '\0')
 		{
 			write(1, &argv[i][j], 1);
 			j++;
