@@ -1,4 +1,5 @@
 norminette -R CheckForbiddenSourceHeader
+-R CheckDefine
 cc -Wall -Wextra -Werror
 
 // 가상환경 활성화
