@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 21:05:40 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/10 19:54:29 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/11 20:47:32 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,21 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (join);
 }
 
-//#include <stdio.h>
-//int main(void)
-//{
-//    char *arr[] = {"Hello", "42", "strjoin"};
-//    char *sep = "_";
-//    char *result;
+#include <stdio.h>
+int main(void)
+{
+    char *arr[] = {"Hello", "42", "strjoin"};
+    char *sep = "_";
+    char *result;
 
-//    result = ft_strjoin(3, arr, sep);
-//    if (result == NULL)
-//    {
-//        printf("Fail!\n");
-//        return (1);
-//    }
+    result = ft_strjoin(3, arr, sep);
+    if (result == NULL)
+    {
+        printf("Fail!\n");
+        return (1);
+    }
 
-//    printf("Result: %s\n", result);
-//    free(result);
-//    return (0);
-//}
+    printf("Result: %s\n", result);
+    free(result);
+    return (0);
+}
