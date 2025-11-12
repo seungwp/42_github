@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 20:18:42 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/10 22:34:00 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/12 11:52:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ typedef struct A
 {
 	int	x;
 	int	y;
-}t_point;
+}	t_point;
 #endif

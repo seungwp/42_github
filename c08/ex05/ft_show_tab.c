@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 16:47:01 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/11 21:52:55 by seukim           ###   ########.fr       */
+/*   Updated: 2025/11/12 12:05:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 #include "ft_stock_str.h"
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 void	ft_putnbr(int nb)
 {
