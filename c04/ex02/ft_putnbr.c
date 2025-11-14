@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 22:30:22 by seukim            #+#    #+#             */
-/*   Updated: 2025/11/07 20:29:34 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 09:24:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	ft_putnbr(int nb)
 	char	c;
 
 	if (nb == -2147483648)
-		write(1, "-2147483648", 11);
-	else
 	{
+		write(1, "-2147483648", 11);
+		return;
+	}
+
 		if (nb < 0)
 		{
 			write(1, "-", 1);
@@ -29,7 +31,6 @@ void	ft_putnbr(int nb)
 			ft_putnbr(nb / 10);
 		c = nb % 10 + '0';
 		write(1, &c, 1);
-	}
 }
 
 // int	main(void)
