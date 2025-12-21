@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:57:03 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/21 16:10:01 by seukim           ###   ########.fr       */
+/*   Updated: 2025/12/21 17:54:51 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	*ft_memset(void *s, int c, size_t n)
 	p = s;
 	while (n > 0)
 		*p++ = (unsigned char) c;
-		n--;
+	n--;
 	return (s);
 }
