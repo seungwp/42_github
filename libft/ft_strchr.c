@@ -6,7 +6,13 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:24 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/21 16:01:01 by seukim           ###   ########.fr       */
+/*   Updated: 2025/12/22 22:49:10 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+
+}

@@ -6,7 +6,20 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:01:12 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/21 16:01:22 by seukim           ###   ########.fr       */
+/*   Updated: 2025/12/22 21:57:59 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n--)
+	{
+		*ptr = 0;
+		ptr++;
+	}
+}
