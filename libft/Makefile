@@ -6,7 +6,7 @@
 #    By: seukim <seukim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/21 18:01:41 by seukim            #+#    #+#              #
-#    Updated: 2025/12/21 18:02:15 by seukim           ###   ########.fr        #
+#    Updated: 2025/12/22 18:44:58 by seukim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ $(NAME): $(OBJ_FILES)
     ar rcs $(NAME) $(OBJ_FILES)
 
 %.o: %.c
-    gcc $(FLAGS) -c $^ -I./ -o $@
+    gcc $(FLAGS) -c $< -I./ -o $@
 
 bonus:
     make WITH_BONUS=1 all
@@ -88,4 +88,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all bonus clean fclean re 
