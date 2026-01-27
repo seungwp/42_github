@@ -6,8 +6,13 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:12 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/22 21:28:35 by seukim           ###   ########.fr       */
+/*   Updated: 2026/01/27 18:40:45 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
