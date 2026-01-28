@@ -6,8 +6,21 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:01 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/22 21:28:35 by seukim           ###   ########.fr       */
+/*   Updated: 2026/01/28 10:51:51 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}

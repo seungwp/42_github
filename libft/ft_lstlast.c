@@ -6,8 +6,17 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:59:58 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/22 21:28:35 by seukim           ###   ########.fr       */
+/*   Updated: 2026/01/28 10:52:12 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

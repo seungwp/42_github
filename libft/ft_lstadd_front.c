@@ -6,8 +6,16 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:59:52 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/22 21:28:35 by seukim           ###   ########.fr       */
+/*   Updated: 2026/01/28 09:38:55 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
