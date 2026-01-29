@@ -28,5 +28,4 @@ ft_lstnew, ft_lstadd_front, ft_lstsize, ft_lstlast, ft_lstadd_back, ft_lstdelone
 
 일반 빌드 : libft 에서 make 명령어를 입력하면 Part 1, Part 2를 포함한 라이브러리를 생성합니다.
 보너스 포함 빌드 : make bonus 명령어를 입력 시 Part 3 연결 리스트 함수까지 포함하여 빌드합니다.
-정리 : make clean 명령어 입력 시 오브젝트 파일(.o), make fclean은 생성된 라이브러리(libft.a)까지 모두 삭제합니다. make re 명령어 입력 시 모든 파일을 삭제 한 후 처음부터 다시 빌드합니다. make so 명령어 입력 시 동적 공유 라이브러리(libft.so)를 생성합니다.
-
+정리 : make clean 명령어 입력 시 오브젝트 파일(.o), make fclean은 생성된 라이브러리(libft.a)까지 모두 삭제합니다. make re 명령어 입력 시 모든 파일을 삭제 한 후 처음부터 다시 빌드합니다.

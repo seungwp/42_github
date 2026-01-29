@@ -6,7 +6,7 @@
 #    By: seukim <seukim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/21 18:01:41 by seukim            #+#    #+#              #
-#    Updated: 2026/01/28 00:54:55 by seukim           ###   ########.fr        #
+#    Updated: 2026/01/29 17:50:25 by seukim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus clean fclean re
-
-so: all
-	gcc -shared -o libft.so $(OBJ_FILES)
