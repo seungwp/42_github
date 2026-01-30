@@ -6,7 +6,7 @@
 #    By: seukim <seukim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/21 18:01:41 by seukim            #+#    #+#              #
-#    Updated: 2026/01/29 17:50:25 by seukim           ###   ########.fr        #
+#    Updated: 2026/01/30 14:55:01 by seukim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,9 @@ OBJS = $(SRCS:%.c=%.o)
 
 BNS_OBJS = $(BNS_SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror
 
 ifdef WITH_BONUS
 	OBJ_FILES = $(OBJS) $(BNS_OBJS)
@@ -75,7 +77,7 @@ $(NAME): $(OBJ_FILES)
 	ar rcs $(NAME) $(OBJ_FILES)
 
 %.o: %.c
-	gcc $(FLAGS) -fPIC -c $< -I./ -o $@
+	$(CC) $(CFLAGS) -c $< -I./ -o $@
 
 bonus:
 	make WITH_BONUS=1 all
