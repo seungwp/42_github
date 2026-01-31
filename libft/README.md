@@ -25,7 +25,7 @@
 | **문자 변환** | `ft_itoa` (숫자를 문자열로), `ft_strmapi`, `ft_striteri` |
 | **출력 함수** | `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd` |
 
-### Bonus Part: Linked List
+### Part 3: Linked List
 연결 리스트(Linked List)를 다루기 위한 함수들입니다.
 
 - **기본 조작**: `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`, `ft_lstadd_back`
@@ -34,13 +34,10 @@
 ## Instructions
 이 프로젝트는 `Makefile`을 통해 빌드됩니다. 터미널에서 다음 명령어들을 사용할 수 있습니다.
 
-### 빌드 및 컴파일 (Linux/macOS)
+### 빌드 및 컴파일 (Linux)
 
-# Part 1, 2 함수 컴파일 및 libft.a 생성
+# Part 1, 2, 3 함수 컴파일 및 libft.a 생성
 make
-
-# Bonus 함수를 포함하여 컴파일
-make bonus
 
 # 생성된 object 파일(.o) 삭제
 make clean

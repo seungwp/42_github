@@ -6,11 +6,16 @@
 #    By: seukim <seukim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/21 18:01:41 by seukim            #+#    #+#              #
-#    Updated: 2026/01/30 19:28:37 by seukim           ###   ########.fr        #
+#    Updated: 2026/01/31 17:01:23 by seukim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
+RM = rm -f
 
 SRCS = ft_atoi.c \
        ft_bzero.c \
@@ -21,6 +26,15 @@ SRCS = ft_atoi.c \
        ft_isdigit.c \
        ft_isprint.c \
        ft_itoa.c \
+       ft_lstadd_back.c \
+       ft_lstadd_front.c \
+       ft_lstclear.c \
+       ft_lstdelone.c \
+       ft_lstiter.c \
+       ft_lstlast.c \
+       ft_lstmap.c \
+       ft_lstnew.c \
+       ft_lstsize.c \
        ft_memchr.c \
        ft_memcmp.c \
        ft_memcpy.c \
@@ -45,49 +59,24 @@ SRCS = ft_atoi.c \
        ft_strtrim.c \
        ft_substr.c \
        ft_tolower.c \
-       ft_toupper.c
+       ft_toupper.c \
 
-BNS_SRCS = ft_lstadd_back.c \
-           ft_lstadd_front.c \
-           ft_lstclear.c \
-           ft_lstdelone.c \
-           ft_lstiter.c \
-           ft_lstlast.c \
-           ft_lstmap.c \
-           ft_lstnew.c \
-           ft_lstsize.c
-
-OBJS = $(SRCS:%.c=%.o)
-
-BNS_OBJS = $(BNS_SRCS:%.c=%.o)
-
-CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
-
-ifdef WITH_BONUS
-	OBJ_FILES = $(OBJS) $(BNS_OBJS)
-else
-	OBJ_FILES = $(OBJS)
-endif
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES)
-	ar rcs $(NAME) $(OBJ_FILES)
+$(NAME): $(OBJS)
+	$(AR) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -I./ -o $@
-
-bonus:
-	make WITH_BONUS=1 all
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BNS_OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
