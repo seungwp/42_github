@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:34 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/27 17:05:31 by seukim           ###   ########.fr       */
+/*   Updated: 2026/01/31 13:57:33 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 
 	i = 0;
-	if (s == 0 || f == 0)
+	if (!s || !f)
 		return (NULL);
 	new_mem = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!new_mem)
