@@ -138,7 +138,7 @@ int	main(void)
 	printf("\n\n");
 
 
-	printf("========== BONUS TEST (Linked List) ==========\n");
+	printf("========== PART 3 TEST (Linked List) ==========\n");
 	
 	t_list *head = ft_lstnew(ft_strdup("Node 1"));
 	t_list *node2 = ft_lstnew(ft_strdup("Node 2"));
