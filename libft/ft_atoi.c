@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:01:10 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/30 20:06:41 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:11:14 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,13 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * sign);
 }
+
+//int main(void)
+//{
+//    printf("%d\n", ft_atoi("42"));
+//    printf("%d\n", ft_atoi("   -42"));
+//    printf("%d\n", ft_atoi("2147483647"));
+//    printf("%d\n", ft_atoi("-2147483648"));
+//    printf("%d\n", ft_atoi("  +12345"));
+//    return (0);
+//}

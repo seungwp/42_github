@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:02 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/26 11:01:42 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:35:46 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,20 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+//int main(void)
+//{
+//    char    str[] = "Hello World";
+//    char    *ptr;
+
+//    ptr = ft_memchr(str, 'W', 11);
+//    printf("Find 'W': %s\n", ptr);
+
+//    ptr = ft_memchr(str, 'o', 5);
+//    printf("Find 'o' in 5 bytes: %s\n", ptr);
+
+//    ptr = ft_memchr(str, 'z', 11);
+//    printf("Find 'z': %p\n", ptr);
+
+//    return (0);
+//}

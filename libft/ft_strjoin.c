@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:59:44 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/26 21:44:26 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 17:01:27 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(new_mem, s2, s1_len + s2_len + 1);
 	return (new_mem);
 }
+
+//int main(void)
+//{
+//    char *s1 = "Hello ";
+//    char *s2 = "42 gs!";
+//    char *res;
+
+//    res = ft_strjoin(s1, s2);
+//    printf("Joined: %s\n", res);
+//    free(res);
+
+//    res = ft_strjoin(NULL, "Only s2");
+//    printf("Only s2: %s\n", res);
+//    free(res);
+
+//    res = ft_strjoin("Only s1", NULL);
+//    printf("Only s1: %s\n", res);
+//    free(res);
+
+//    return (0);
+//}

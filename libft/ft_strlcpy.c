@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:31 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/26 12:35:16 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 17:03:01 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,21 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	return (i);
 }
+
+//int main(void)
+//{
+//    char    dst[20];
+//    char    *src = "42 Gyeongsan";
+//    size_t  res;
+
+//    res = ft_strlcpy(dst, src, 5);
+//    printf("Result: %s, Return: %zu\n", dst, res);
+
+//    res = ft_strlcpy(dst, src, 20);
+//    printf("Result: %s, Return: %zu\n", dst, res);
+
+//    res = ft_strlcpy(dst, src, 0);
+//    printf("Return (size 0): %zu\n", res);
+
+//    return (0);
+//}

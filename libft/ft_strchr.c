@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:24 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/22 22:54:30 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:56:01 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,23 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
+
+//int main(void)
+//{
+//    char *str = "Hello World";
+//    char *ptr;
+
+//    ptr = ft_strchr(str, 'W');
+//    printf("Find 'W': %s\n", ptr);
+
+//    ptr = ft_strchr(str, 'o');
+//    printf("Find 'o': %s\n", ptr);
+
+//    ptr = ft_strchr(str, '\0');
+//    printf("Find '\\0': %p (is end: %d)\n", ptr, ptr == (str + 11));
+
+//    ptr = ft_strchr(str, 'z');
+//    printf("Find 'z': %s\n", ptr);
+
+//    return (0);
+//}

@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:09 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/30 17:34:59 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:42:34 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,17 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_memcpy(ptr_dest, ptr_src, n);
 	return (dest);
 }
+
+//int main(void)
+//{
+//    char str1[] = "123456789";
+//    char str2[] = "123456789";
+
+//    ft_memmove(str1 + 5, str1, 4);
+//    printf("General: %s\n", str1);
+
+//    ft_memmove(str2 + 2, str2, 5);
+//    printf("Overlap: %s\n", str2);
+
+//    return (0);
+//}

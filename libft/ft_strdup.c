@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:37:03 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/28 01:51:54 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:57:08 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,18 @@ char	*ft_strdup(const char *s)
 	dup[i] = '\0';
 	return (dup);
 }
+
+//int main(void)
+//{
+//    char *str = "Hello 42!";
+//    char *dup;
+
+//    dup = ft_strdup(str);
+//    if (dup == NULL)
+//        return (1);
+//    printf("Original: %s\n", str);
+//    printf("Duplicate: %s\n", dup);
+//    printf("Address check: %p vs %p\n", (void *)str, (void *)dup);
+//    free(dup);
+//    return (0);
+//}

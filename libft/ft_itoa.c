@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:59:47 by seukim            #+#    #+#             */
-/*   Updated: 2025/12/22 22:04:01 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:22:59 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,25 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
+
+//int main(void)
+//{
+//    char *s1 = ft_itoa(0);
+//    char *s2 = ft_itoa(123);
+//    char *s3 = ft_itoa(-456);
+//    char *s4 = ft_itoa(2147483647);
+//    char *s5 = ft_itoa(-2147483648);
+
+//    printf("%s\n", s1);
+//    printf("%s\n", s2);
+//    printf("%s\n", s3);
+//    printf("%s\n", s4);
+//    printf("%s\n", s5);
+
+//    free(s1);
+//    free(s2);
+//    free(s3);
+//    free(s4);
+//    free(s5);
+//    return (0);
+//}

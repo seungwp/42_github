@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:26 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/27 18:28:37 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:58:42 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,22 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		i++;
 	}
 }
+
+//void	my_iter_func(unsigned int i, char *c)
+//{
+//	if (*c >= 'a' && *c <= 'z')
+//		*c -= 32;
+//}
+
+//int main(void)
+//{
+//	char str[] = "hello 42 gs";
+
+//	printf("Before: %s\n", str);
+
+//	ft_striteri(str, my_iter_func);
+
+//	printf("After : %s\n", str);
+
+//	return (0);
+//}

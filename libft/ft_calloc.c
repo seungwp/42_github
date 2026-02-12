@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:01:13 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/30 16:59:16 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:19:36 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,23 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
+
+//int main(void)
+//{
+//    int     *arr;
+//    size_t  i;
+//    size_t  count;
+
+//    count = 5;
+//    arr = (int *)ft_calloc(count, sizeof(int));
+//    if (!arr)
+//        return (1);
+//    i = 0;
+//    while (i < count)
+//    {
+//        printf("%d ", arr[i]);
+//        i++;
+//    }
+//    free(arr);
+//    return (0);
+//}

@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:23 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/30 20:34:03 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:53:52 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,22 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (fill_res(s, c, res));
 }
+
+//int main(void)
+//{
+//    char    **result;
+//    int     i;
+
+//    i = 0;
+//    result = ft_split("  Hello  42 gs  Good  ", ' ');
+//    if (!result)
+//        return (1);
+//    while (result[i])
+//    {
+//        printf("row [%d]: %s\n", i, result[i]);
+//        free(result[i]);
+//        i++;
+//    }
+//    free(result);
+//    return (0);
+//}

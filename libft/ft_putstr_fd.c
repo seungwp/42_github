@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:17 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/27 18:53:58 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:52:49 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,14 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+
+//int main(void)
+//{
+//    ft_putstr_fd("Hello, world!", 1);
+//    write(1, "\n", 1);
+//    ft_putstr_fd("42 gs", 1);
+//    write(1, "\n", 1);
+//    ft_putstr_fd("", 1);
+//    ft_putstr_fd(NULL, 1);
+//    return (0);
+//}

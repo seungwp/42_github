@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:12 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/27 18:54:10 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:44:47 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,11 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
+
+//int main(void)
+//{
+//    ft_putendl_fd("Hello, World!", 1);
+//    ft_putendl_fd("This has a newline", 1);
+//    ft_putendl_fd(NULL, 1);
+//    return (0);
+//}

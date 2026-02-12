@@ -6,11 +6,9 @@
 /*   By: seukim <seukim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 16:00:13 by seukim            #+#    #+#             */
-/*   Updated: 2026/01/27 18:52:48 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/12 16:50:27 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 #include "libft.h"
 
@@ -32,3 +30,23 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	ft_putchar_fd((n % 10) + '0', fd);
 }
+
+//int main(void)
+//{
+//    ft_putnbr_fd(0, 1);
+//    write(1, "\n", 1);
+
+//    ft_putnbr_fd(123, 1);
+//    write(1, "\n", 1);
+
+//    ft_putnbr_fd(-456, 1);
+//    write(1, "\n", 1);
+
+//    ft_putnbr_fd(2147483647, 1);
+//    write(1, "\n", 1);
+
+//    ft_putnbr_fd(-2147483648, 1);
+//    write(1, "\n", 1);
+
+//    return (0);
+//}
