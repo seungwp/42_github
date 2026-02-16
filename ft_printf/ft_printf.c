@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:37:02 by seukim            #+#    #+#             */
-/*   Updated: 2026/02/15 16:32:54 by seukim           ###   ########.fr       */
+/*   Updated: 2026/02/16 13:26:46 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int	ft_formats(va_list ap, const char format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		len;
 	int		i;
+	int		len;
 
 	i = 0;
 	len = 0;
