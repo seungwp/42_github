@@ -6,7 +6,7 @@
 #    By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/21 18:01:41 by seukim            #+#    #+#              #
-#    Updated: 2026/02/15 16:25:16 by seukim           ###   ########.fr        #
+#    Updated: 2026/02/16 14:21:36 by seukim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ RM = rm -f
 LIBFT_DIR = ./libft
 LIBFT_NAME = $(LIBFT_DIR)/libft.a
 
-SRCS = ft_printf.c ft_print_cs.c
+SRCS = ft_printf.c \
+		ft_print_text.c \
+		ft_print_numbers.c \
+		ft_print_hex.c \
+		ft_print_pointer.c
 
 OBJS = $(SRCS:.c=.o)
 
