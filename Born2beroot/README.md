@@ -43,6 +43,8 @@ sha1sum <파일명>.vdi
 - 스크립트 로직 검토: monitoring.sh 작성 시 시스템 자원(CPU, RAM, Disk) 정보를 추출하는 리눅스 명령어의 옵션을 검토했습니다.
 - 본 README.md 문서의 작성 가이드를 얻었습니다.
 
+## Additional information
+
 Debian vs Rocky Linux
 - 데비안은 커뮤니티가 주도하는 독립적인 배포판 - 자유도 높음
 - 로키는 기업용 - 레드햇 엔터프라이즈 리눅스(RHEL)의 소스 코드를 그대로 사용하는 배포판으로, 기업 환경에 최적화된 안정성
@@ -68,35 +70,37 @@ apt와 aptitude의 차이점?
 - apt (Advanced Package Tool) 데비안의 표준 패키지 관리 도구로 가장 대중적으로 사용
 - aptitude는 apt보다 높은 수준의 패키지 관리 도구로 패키지 설치에서 문제가 생기면 해결책을 제시해주고 안쓰는 파일도 지워주는 도구
 
-sudo ufw status
-sudo systemctl status ssh
-uname, hostnamectl, cat /etc/os-release
+## Command
 
-id seukim
-id seukim, cat /etc/group
-sudo vi /etc/login.defs 
-sudo adduser test
-groupadd testgroup
-sudo usermod -aG <그룹명> <유저명>
+- sudo ufw status
+- sudo systemctl status ssh
+- uname, hostnamectl, cat /etc/os-release
 
-hostname, hostnamectl
-sudo hostnamectl set-hostname <새로운 이름>
-sudo reboot
-lsblk
+- id seukim
+- id seukim, cat /etc/group
+- sudo vi /etc/login.defs 
+- sudo adduser test
+- groupadd testgroup
+- sudo usermod -aG <그룹명> <유저명>
 
-sudo usermod -aG sudo <유저명>
-sudo ls -l /var/log/sudo/
-sudo sudoreplay -l -d /var/log/sudo, sudo tree /var/log/sudo
+- hostname, hostnamectl
+- sudo hostnamectl set-hostname <새로운 이름>
+- sudo reboot
+- lsblk
 
-sudo ufw status verbose
-sudo ufw status
-sudo ufw allow 8080
-sudo ufw delete allow 8080
-sudo ufw status
+- sudo usermod -aG sudo <유저명>
+- sudo ls -l /var/log/sudo/
+- sudo sudoreplay -l -d /var/log/sudo, sudo tree /var/log/sudo
 
-systemctl status ssh
-ss -tunlp, vim /etc/ssh/sshd_cofing
+- sudo ufw status verbose
+- sudo ufw status
+- sudo ufw allow 8080
+- sudo ufw delete allow 8080
+- sudo ufw status
 
-sudo vim /usr/local/bin/moniterning.sh
-sudo crontab -l
-sudo crontab -e
+- systemctl status ssh
+- ss -tunlp, vim /etc/ssh/sshd_cofing
+
+- sudo vim /usr/local/bin/moniterning.sh
+- sudo crontab -l
+- sudo crontab -e
