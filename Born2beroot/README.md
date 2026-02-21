@@ -16,17 +16,17 @@
 
 ## Instructions
 
-- VirtualBox를 실행하고 설정된 Debian 가상 머신을 선택하여 [시작] 버튼을 누릅니다.
+- VirtualBox를 실행하고 설정된 Debian 가상 머신을 선택하여 [start] 버튼을 누릅니다.
 - 터미널 환경(CLI)이 나타나면 사용자 ID(seukim)와 비밀번호로 로그인합니다.
 - 호스트 PC의 터미널에서 다음 명령어를 통해 가상 머신에 접속 할 수 있습니다.
 ```bash
-ssh seukim@<IP_ADDRESS> -p 4242
+ssh seukim@127.0.0.1 -p 4242
 ```
 - 서버가 가동되면 monitoring.sh 스크립트가 10분마다 모든 터미널에 시스템 상태 정보를 출력합니다.
 - 스크립트의 위치는 /usr/local/bin/monitoring.sh이며, cron을 통해 자동 실행됩니다.
 - 가상 머신의 무결성을 확인하기 위해 다음 명령어로 .vdi 파일의 SHA1 해시값을 확인할 수 있습니다
 ```bash
-sha1sum <파일명>.vdi
+sha1sum Born2beRoot.vdi
 ```
 이 해시값은 제출된 signature.txt 파일의 내용과 일치해야 합니다.
 
