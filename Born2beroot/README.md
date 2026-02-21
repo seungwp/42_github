@@ -26,7 +26,7 @@ ssh seukim@<IP_ADDRESS> -p 4242
 - 스크립트의 위치는 /usr/local/bin/monitoring.sh이며, cron을 통해 자동 실행됩니다.
 - 가상 머신의 무결성을 확인하기 위해 다음 명령어로 .vdi 파일의 SHA1 해시값을 확인할 수 있습니다
 ```bash
-shasum <파일명>.vdi
+sha1sum <파일명>.vdi
 ```
 이 해시값은 제출된 signature.txt 파일의 내용과 일치해야 합니다.
 
@@ -54,15 +54,15 @@ shasum <파일명>.vdi
 어떤 운영 시스템을 선택했는가?
 - 데비안 선택
 
-Debian 과 Rocky의 간단한 차이점들
-- 데비안은 커뮤니티가 주도하는 독립적인 배포판 - 자유도 높음
-- 로키는 기업용 - 레드햇 엔터프라이즈 리눅스(RHEL)의 소스 코드를 그대로 사용하는 배포판으로, 기업 환경에 최적화된 안정성
-- 데비안은 apt, aptitude 명령어 사용 / 로키는 dnf, yum 명령어 사용
-
-가상머신의 목적은? (사용이유)
+가상머신의 목적은? (사용 이유)
 - 하나의 물리 서버에 여러 서버 구축하여 여러 개의 가상 서버를 동시에 구동할 수 있어 하드웨어 구매 비용 아낌
 - 각 서비스가 필요로 하는 만큼만 자원을 할당하고, 필요에 따라 유연하게 조절 가능
 - 가상 머신 내부에서 발생하는 문제는 호스트 OS나 다른 가상머신에 전혀 영향을 주지 않음
+
+Debian vs Rocky Linux
+- 데비안은 커뮤니티가 주도하는 독립적인 배포판 - 자유도 높음
+- 로키는 기업용 - 레드햇 엔터프라이즈 리눅스(RHEL)의 소스 코드를 그대로 사용하는 배포판으로, 기업 환경에 최적화된 안정성
+- 데비안은 apt, aptitude 명령어 사용 / 로키는 dnf, yum 명령어 사용
 
 AppArmor vs SELinux
 - AppArmor는 파일의 절대 경로를 사용하여 보안 프로필을 생성하므로, 관리자가 설정 내용을 이해하고 수정하기가 훨씬 직관적임
@@ -84,61 +84,35 @@ apt와 aptitude의 차이점?
 - apt (Advanced Package Tool) 데비안의 표준 패키지 관리 도구로 가장 대중적으로 사용
 - aptitude는 apt보다 높은 수준의 패키지 관리 도구로 패키지 설치에서 문제가 생기면 해결책을 제시해주고 안쓰는 파일도 지워주는 도구
 
-2. 기본 설정
+sudo ufw status
+sudo systemctl status ssh
+uname, hostnamectl, cat /etc/os-release
 
-처음 실행 시 그래픽 환경이 아닌지, 비밀번호가 요구되는지 확인
-UFW 서비스가 시작되었는지 확인
-SSH 서비스가 시작되었는지 확인
-사용되는 OS가 데비안이 맞는지 확인
+id seukim
+id seukim, cat /etc/group
+sudo vi /etc/login.defs 
+sudo adduser test
+groupadd testgroup
+sudo usermod -aG <그룹명> <유저명>
 
-3. 사용자
+hostname, hostnamectl
+sudo hostnamectl set-hostname <새로운 이름>
+sudo reboot
+lsblk
 
-로그인한 유저가 가상머신 속에 존재하는지
-유저가 추가되었는지, 그것이 sudo와 user42 그룹에 속하는 지
-비밀번호 정책에 관한 규칙들이 제대로 설정 되었는지
-새로운 유저 생성
-임의로 규칙에 맞게 비밀번호 생성
-새로운 유저가 추가된 상태에서 피평가자가 새로운 이름을 가진 그릅을 생성해야함
-그리고 그 그룹을 이 유저에게 할당해야함 진짜 속하는지 확인해야함
-비밀번호 정책의 장점을 설명해야함 단점도 설명해야함
+sudo usermod -aG sudo <유저명>
+sudo ls -l /var/log/sudo/
+sudo sudoreplay -l -d /var/log/sudo, sudo tree /var/log/sudo
 
-4. 호스트명과 파티션들
+sudo ufw status verbose
+sudo ufw status
+sudo ufw allow 8080
+sudo ufw delete allow 8080
+sudo ufw status
 
-가상머신의 호스트명이 seukim42인지 확인
-호스트명을 수정하고 가상머신을 다시 시작
-업데이트 확인
-다시 원래의 호스트명으로 복원
-어떻게 이 가상머신의 파티션들을 확인할 수 있는가
-과제에 주어진 예시와 출력 결과물 비교
+systemctl status ssh
+ss -tunlp, vim /etc/ssh/sshd_cofing
 
-5. sudo
-
-sudo 프로그램이 가상머신에 설치되어있는지 확인
-새로운 유저를 sudo 그룹에 할당하는 것을 보여줘야함
-왜 sudo를 사용해야하나요
-/var/log/sudo/ 폴더가 존재하는지, 그리고 그것이 최소한 한개의 파일을 갖는지 확인
-/var/log/sudo 폴더 속 파일들이 업데이트 되었는지 확인
-
-6. UFW
-
-UFW 프로그램이 가상머신에 설치되었는지 확인
-제대로 동작하는지 확인
-UFW가 무엇인지 장점 설명
-UFW 규칙 나열 4242 포트에 대한 규칙도 있어야함
-8080 포트를 열기 위함 새로운 규칙 추가 규칙 목록에 추가되었는지 확인
-새로운 규칙 삭제
-
-7. SSH
-
-SSH 서비스가 가상머신에 설치되었는지 확인
-제대로 동작하는지 확인
-SSH가 무엇인지 장점은 무엇인지 설명
-SSH가 4242포트만들 사용하는지 확인
-SSH를 사용하도록 하고 root유저로 ssh를 사용할 수 없음을 확인
-
-8. Script monitoring
-
-스크립트가 어떻게 동작하는지 코드 보여주기
-cron이란 무엇인지
-어떻게 설정했길래 10분마다 한번씩 실행되는지
-매분 실행되도록 고치고 다시 서버를 재시작하고 여전히 같은 장소에 있는지 권한은 바뀌지 않았는지 수정되지 않았는지 확인 후 1분마다 동작하는지 확인
+sudo vim /usr/local/bin/moniterning.sh
+sudo crontab -l
+sudo crontab -e
