@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:37:02 by seukim            #+#    #+#             */
-/*   Updated: 2026/03/28 18:49:47 by seukim           ###   ########.fr       */
+/*   Updated: 2026/03/28 19:56:51 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ int	ft_printf(const char *format, ...)
 //	ft_printf("Mine: %% | %s | %p\n", (char *)NULL, NULL);
 //	printf("Orig: %% | %s | %p\n", (char *)NULL, NULL);
 
-//	ft_printf("Hello %");
-//	printf("Hello %");
+//	printf("hello\n");
+//	ft_printf("hello\n");
+
 //	return (0);
 //}
 // make && cc ft_printf.c libftprintf.a && ./a.out
