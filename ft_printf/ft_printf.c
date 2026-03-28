@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:37:02 by seukim            #+#    #+#             */
-/*   Updated: 2026/02/16 15:05:38 by seukim           ###   ########.fr       */
+/*   Updated: 2026/03/28 18:49:47 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,29 +63,26 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	int	len_ft;
-//	int	len_or;
-
 //	printf("--- [1] Char & String ---\n");
-//	len_ft = ft_printf("Mine: %c %s\n", 'G', "Gemini");
-//	len_or =    printf("Orig: %c %s\n", 'G', "Gemini");
-//	printf("Len: %d vs %d\n\n", len_ft, len_or);
+//	ft_printf("Mine: %c %s\n", 'G', "Hello World!");
+//	printf("Orig: %c %s\n", 'G', "Hello World!");
 
 //	printf("--- [2] Integer & Unsigned ---\n");
-//	len_ft = ft_printf("Mine: %d %i %u\n", INT_MIN, 42, UINT_MAX);
-//	len_or =    printf("Orig: %d %i %u\n", INT_MIN, 42, UINT_MAX);
-//	printf("Len: %d vs %d\n\n", len_ft, len_or);
+//	ft_printf("Mine: %d %i %u\n", INT_MIN, 42, UINT_MAX);
+//	printf("Orig: %d %i %u\n", INT_MIN, 42, UINT_MAX);
+
+//	int dummy = 42;
 
 //	printf("--- [3] Hex & Pointer ---\n");
-//	len_ft = ft_printf("Mine: %x %X %p\n", 255, 255, &len_ft);
-//	len_or =    printf("Orig: %x %X %p\n", 255, 255, &len_ft);
-//	printf("Len: %d vs %d\n\n", len_ft, len_or);
+//	ft_printf("Mine: %x %X %p %p\n", 255, 255, &dummy, (void *)0x12345678);
+//	printf("Orig: %x %X %p %p\n", 255, 255, &dummy, (void *)0x12345678);
 
 //	printf("--- [4] Percent & NULL ---\n");
-//	len_ft = ft_printf("Mine: %% | %s | %p\n", (char *)NULL, NULL);
-//	len_or =    printf("Orig: %% | %s | %p\n", (char *)NULL, NULL);
-//	printf("Len: %d vs %d\n", len_ft, len_or);
+//	ft_printf("Mine: %% | %s | %p\n", (char *)NULL, NULL);
+//	printf("Orig: %% | %s | %p\n", (char *)NULL, NULL);
 
+//	ft_printf("Hello %");
+//	printf("Hello %");
 //	return (0);
 //}
 // make && cc ft_printf.c libftprintf.a && ./a.out
