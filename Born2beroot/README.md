@@ -62,9 +62,10 @@ UFW vs firewalld
 VirtualBox vs UTM
 - VirtualBox은 오라클 UTM은 UTM 제작 팀에서 만듦
 - VirtualBox은 윈도우, 리눅스, 맥(Intel)
-- UTM은 맥, iOS
+- UTM은 맥, iOS에서 특화
 - VirtualBox은 호스트 OS 위에서 하드웨어 자원을 직접 가상화함.
-- UTM은 애플의 가상화 프레임워크를 사용함
+- UTM은 QEMU라는 에뮬레이터를 엔진으로 사용하며, Apple이 제공하는 Hypervisor.framework를 적극적으로 활용함.
+- VirtualBox는 x86 아키텍처 기반의 '하드웨어 가속 Type 2 하이퍼바이저'이며, UTM은 Apple Silicon에 최적화된 하이퍼바이저 인터페이스이자 QEMU 기반의 '멀티 아키텍처 에뮬레이터'
 
 apt와 aptitude의 차이점?
 - apt (Advanced Package Tool) 데비안의 표준 패키지 관리 도구로 가장 대중적으로 사용
@@ -78,9 +79,10 @@ apt와 aptitude의 차이점?
 
 - id seukim
 - id seukim, cat /etc/group
-- sudo vi /etc/login.defs 
+- sudo vi /etc/login.defs
+- cat /etc/pam.d/common-password 
 - sudo adduser test
-- groupadd testgroup
+- sudo groupadd testgroup
 - sudo usermod -aG <그룹명> <유저명>
 
 - hostname, hostnamectl
@@ -90,7 +92,7 @@ apt와 aptitude의 차이점?
 
 - sudo usermod -aG sudo <유저명>
 - sudo ls -l /var/log/sudo/
-- sudo sudoreplay -l -d /var/log/sudo, sudo tree /var/log/sudo
+- sudo sudoreplay -ld /var/log/sudo, sudo tree /var/log/sudo
 
 - sudo ufw status verbose
 - sudo ufw status
