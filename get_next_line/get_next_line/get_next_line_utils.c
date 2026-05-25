@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:39:32 by marvin            #+#    #+#             */
-/*   Updated: 2026/05/25 14:17:46 by marvin           ###   ########.fr       */
+/*   Updated: 2026/05/25 17:37:09 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,28 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strjoin(char *s1, const char *s2)
 {
-	char	*result;
-	size_t	len1;
-	size_t	len2;
+	char	*res;
 	size_t	i;
+	size_t	j;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	result = malloc(len1 + len2 + 1);
-	if (!result)
+	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!res)
 		return (free(s1), NULL);
 	i = 0;
-	while (i < len1 + len2)
+	while (s1 && s1[i])
 	{
-		if (i < len1)
-			result[i] = s1[i];
-		else
-			result[i] = s2[i - len1];
+		res[i] = s1[i];
 		i++;
 	}
-	result[i] = '\0';
+	j = 0;
+	while (s2[j])
+	{
+		res[i + j] = s2[j];
+		j++;
+	}
+	res[i + j] = '\0';
 	free(s1);
-	return (result);
+	return (res);
 }
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)

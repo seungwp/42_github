@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:39:39 by marvin            #+#    #+#             */
-/*   Updated: 2026/05/25 14:17:47 by marvin           ###   ########.fr       */
+/*   Updated: 2026/05/25 17:40:22 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,25 @@ static char	*read_to_leftover(int fd, char *leftover)
 	char	*buf;
 	ssize_t	bytes_read;
 
+	if (ft_strchr(leftover, '\n'))
+		return (leftover);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (free(leftover), NULL);
 	bytes_read = 1;
-	while (bytes_read > 0 && !ft_strchr(leftover, '\n'))
+	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read <= 0)
 			break ;
 		buf[bytes_read] = '\0';
 		leftover = ft_strjoin(leftover, buf);
-		if (!leftover)
+		if (!leftover || ft_strchr(buf, '\n'))
 			break ;
 	}
 	free(buf);
 	if (bytes_read == -1)
-	{
-		free(leftover);
-		return (NULL);
-	}
+		return (free(leftover), NULL);
 	return (leftover);
 }
 
@@ -92,6 +91,12 @@ char	*get_next_line(int fd)
 	if (!leftover)
 		return (NULL);
 	line = extract_line(leftover);
+	if (!line)
+	{
+		free(leftover);
+		leftover = NULL;
+		return (NULL);
+	}
 	leftover = update_leftover(leftover);
 	return (line);
 }
