@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:39:39 by marvin            #+#    #+#             */
-/*   Updated: 2026/05/25 17:40:22 by seukim           ###   ########.fr       */
+/*   Updated: 2026/05/25 17:51:04 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,22 @@ static char	*extract_line(char *leftover)
 	char	*line;
 	size_t	i;
 
-	i = 0;
 	if (!leftover || !leftover[0])
 		return (NULL);
+	i = 0;
 	while (leftover[i] && leftover[i] != '\n')
 		i++;
 	if (leftover[i] == '\n')
 		i++;
-	line = ft_substr(leftover, 0, i);
+	line = malloc(i + 1);
+	if (!line)
+		return (NULL);
+	i = -1;
+	while (leftover[++i] && leftover[i] != '\n')
+		line[i] = leftover[i];
+	if (leftover[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
 	return (line);
 }
 
@@ -59,24 +67,24 @@ static char	*update_leftover(char *leftover)
 {
 	char	*new_leftover;
 	size_t	i;
+	size_t	j;
 
-	if (!leftover)
-		return (NULL);
 	i = 0;
 	while (leftover[i] && leftover[i] != '\n')
 		i++;
 	if (!leftover[i])
-	{
-		free(leftover);
-		return (NULL);
-	}
-	new_leftover = ft_substr(leftover, i + 1, ft_strlen(leftover) - i - 1);
+		return (free(leftover), NULL);
+	new_leftover = malloc(ft_strlen(leftover) - i + 1);
+	if (!new_leftover)
+		return (free(leftover), NULL);
+	i++;
+	j = 0;
+	while (leftover[i])
+		new_leftover[j++] = leftover[i++];
+	new_leftover[j] = '\0';
 	free(leftover);
-	if (new_leftover && !new_leftover[0])
-	{
-		free(new_leftover);
-		return (NULL);
-	}
+	if (!new_leftover[0])
+		return (free(new_leftover), NULL);
 	return (new_leftover);
 }
 

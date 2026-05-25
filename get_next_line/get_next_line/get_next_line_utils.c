@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:39:32 by marvin            #+#    #+#             */
-/*   Updated: 2026/05/25 17:37:09 by seukim           ###   ########.fr       */
+/*   Updated: 2026/05/25 17:47:25 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,20 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strjoin(char *s1, const char *s2)
 {
 	char	*res;
+	size_t	l1;
 	size_t	i;
 	size_t	j;
 
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	l1 = ft_strlen(s1);
+	res = malloc(l1 + ft_strlen(s2) + 1);
 	if (!res)
 		return (free(s1), NULL);
-	i = 0;
-	while (s1 && s1[i])
-	{
+	i = -1;
+	while (++i < l1)
 		res[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
+	j = -1;
+	while (s2[++j])
 		res[i + j] = s2[j];
-		j++;
-	}
 	res[i + j] = '\0';
 	free(s1);
 	return (res);
