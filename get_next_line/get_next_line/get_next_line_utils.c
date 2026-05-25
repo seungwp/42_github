@@ -42,26 +42,6 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
-{
-	char	*res;
-	size_t	s1_len;
-	size_t	j;
-
-	s1_len = ft_strlen(s1);
-	res = realloc(s1, s1_len + ft_strlen(s2) + 1);
-	if (!res)
-		return (free(s1), NULL);
-	j = 0;
-	while (s2[j])
-	{
-		res[s1_len + j] = s2[j];
-		j++;
-	}
-	res[s1_len + j] = '\0';
-	return (res);
-}
-
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*result;
@@ -86,4 +66,48 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	result[i] = '\0';
 	return (result);
+}
+
+char	*ft_grow(char *buf, size_t len, size_t new_cap)
+{
+	char	*new_buf;
+	size_t	i;
+
+	new_buf = malloc(new_cap);
+	if (!new_buf)
+		return (free(buf), NULL);
+	i = 0;
+	while (i < len)
+	{
+		new_buf[i] = buf[i];
+		i++;
+	}
+	new_buf[len] = '\0';
+	free(buf);
+	return (new_buf);
+}
+
+char	*update_leftover(char *leftover)
+{
+	char	*new_leftover;
+	size_t	i;
+
+	if (!leftover)
+		return (NULL);
+	i = 0;
+	while (leftover[i] && leftover[i] != '\n')
+		i++;
+	if (!leftover[i])
+	{
+		free(leftover);
+		return (NULL);
+	}
+	new_leftover = ft_substr(leftover, i + 1, ft_strlen(leftover) - i - 1);
+	free(leftover);
+	if (new_leftover && !new_leftover[0])
+	{
+		free(new_leftover);
+		return (NULL);
+	}
+	return (new_leftover);
 }

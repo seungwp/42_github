@@ -12,31 +12,69 @@
 
 #include "get_next_line.h"
 
-static char	*read_to_leftover(int fd, char *leftover)
+static char	*append_chunk(char *res, size_t *len, size_t *cap, char *chunk)
+{
+	size_t	br;
+	size_t	new_cap;
+	size_t	i;
+
+	br = ft_strlen(chunk);
+	if (*len + br + 1 > *cap)
+	{
+		new_cap = (*len + br + 1) * 2;
+		res = ft_grow(res, *len, new_cap);
+		if (!res)
+			return (NULL);
+		*cap = new_cap;
+	}
+	i = 0;
+	while (i < br)
+	{
+		res[*len + i] = chunk[i];
+		i++;
+	}
+	*len += br;
+	res[*len] = '\0';
+	return (res);
+}
+
+static char	*fill_res(int fd, char *res, size_t *len, size_t *cap)
 {
 	char	*buf;
-	ssize_t	bytes_read;
+	ssize_t	br;
+
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (free(res), NULL);
+	br = read(fd, buf, BUFFER_SIZE);
+	while (br > 0)
+	{
+		buf[br] = '\0';
+		res = append_chunk(res, len, cap, buf);
+		if (!res || ft_strchr(buf, '\n'))
+			break ;
+		br = read(fd, buf, BUFFER_SIZE);
+	}
+	free(buf);
+	if (!res || br == -1)
+		return (free(res), NULL);
+	return (res);
+}
+
+static char	*read_to_leftover(int fd, char *leftover)
+{
+	char	*res;
+	size_t	len;
+	size_t	cap;
 
 	if (ft_strchr(leftover, '\n'))
 		return (leftover);
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (free(leftover), NULL);
-	bytes_read = 1;
-	while (bytes_read > 0)
-	{
-		bytes_read = read(fd, buf, BUFFER_SIZE);
-		if (bytes_read <= 0)
-			break ;
-		buf[bytes_read] = '\0';
-		leftover = ft_strjoin(leftover, buf);
-		if (!leftover || ft_strchr(buf, '\n'))
-			break ;
-	}
-	free(buf);
-	if (bytes_read == -1)
-		return (free(leftover), NULL);
-	return (leftover);
+	len = ft_strlen(leftover);
+	cap = (len + BUFFER_SIZE + 1) * 2;
+	res = ft_grow(leftover, len, cap);
+	if (!res)
+		return (NULL);
+	return (fill_res(fd, res, &len, &cap));
 }
 
 static char	*extract_line(char *leftover)
@@ -53,31 +91,6 @@ static char	*extract_line(char *leftover)
 		i++;
 	line = ft_substr(leftover, 0, i);
 	return (line);
-}
-
-static char	*update_leftover(char *leftover)
-{
-	char	*new_leftover;
-	size_t	i;
-
-	if (!leftover)
-		return (NULL);
-	i = 0;
-	while (leftover[i] && leftover[i] != '\n')
-		i++;
-	if (!leftover[i])
-	{
-		free(leftover);
-		return (NULL);
-	}
-	new_leftover = ft_substr(leftover, i + 1, ft_strlen(leftover) - i - 1);
-	free(leftover);
-	if (new_leftover && !new_leftover[0])
-	{
-		free(new_leftover);
-		return (NULL);
-	}
-	return (new_leftover);
 }
 
 char	*get_next_line(int fd)

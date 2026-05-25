@@ -23,7 +23,8 @@
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char *s1, const char *s2);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_grow(char *buf, size_t len, size_t new_cap);
+char	*update_leftover(char *leftover);
 
 #endif
