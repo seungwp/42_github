@@ -6,110 +6,94 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:39:39 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/07 14:40:33 by seukim           ###   ########.fr       */
+/*   Updated: 2026/06/19 20:48:20 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*append_chunk(char *res, size_t *len, size_t *cap, char *chunk)
+static char	*free_and_null(char *s1, char *s2)
 {
-	size_t	br;
-	size_t	new_cap;
-	size_t	i;
-
-	br = ft_strlen(chunk);
-	if (*len + br + 1 > *cap)
-	{
-		new_cap = (*len + br + 1) * 2;
-		res = ft_grow(res, *len, new_cap);
-		if (!res)
-			return (NULL);
-		*cap = new_cap;
-	}
-	i = 0;
-	while (i < br)
-	{
-		res[*len + i] = chunk[i];
-		i++;
-	}
-	*len += br;
-	res[*len] = '\0';
-	return (res);
+	if (s1)
+		free(s1);
+	if (s2)
+		free(s2);
+	return (NULL);
 }
 
-static char	*fill_res(int fd, char *res, size_t *len, size_t *cap)
+static char	*read_to_storage(int fd, char *storage)
 {
 	char	*buf;
-	ssize_t	br;
+	ssize_t	read_bytes;
 
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
-		return (free(res), NULL);
-	br = read(fd, buf, BUFFER_SIZE);
-	while (br > 0)
+		return (free_and_null(storage, NULL));
+	read_bytes = 1;
+	while (!ft_strchr(storage, '\n') && read_bytes > 0)
 	{
-		buf[br] = '\0';
-		res = append_chunk(res, len, cap, buf);
-		if (!res || ft_strchr(buf, '\n'))
+		read_bytes = read(fd, buf, BUFFER_SIZE);
+		if (read_bytes == -1)
+			return (free_and_null(storage, buf));
+		buf[read_bytes] = '\0';
+		storage = ft_strjoin(storage, buf);
+		if (!storage || ft_strchr(buf, '\n'))
 			break ;
-		br = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (!res || br == -1)
-		return (free(res), NULL);
-	return (res);
+	return (storage);
 }
 
-static char	*read_to_leftover(int fd, char *leftover)
-{
-	char	*res;
-	size_t	len;
-	size_t	cap;
-
-	if (ft_strchr(leftover, '\n'))
-		return (leftover);
-	len = ft_strlen(leftover);
-	cap = (len + BUFFER_SIZE + 1) * 2;
-	res = ft_grow(leftover, len, cap);
-	if (!res)
-		return (NULL);
-	return (fill_res(fd, res, &len, &cap));
-}
-
-static char	*extract_line(char *leftover)
+static char	*split_line(char *storage)
 {
 	char	*line;
 	size_t	i;
 
-	i = 0;
-	if (!leftover || !leftover[0])
+	if (!storage || !storage[0])
 		return (NULL);
-	while (leftover[i] && leftover[i] != '\n')
+	i = 0;
+	while (storage[i] && storage[i] != '\n')
 		i++;
-	if (leftover[i] == '\n')
+	if (storage[i] == '\n')
 		i++;
-	line = ft_substr(leftover, 0, i);
+	line = ft_substr(storage, 0, i);
 	return (line);
+}
+
+static char	*trim_storage(char *storage)
+{
+	char	*remains;
+	size_t	i;
+
+	i = 0;
+	while (storage[i] && storage[i] != '\n')
+		i++;
+	if (!storage[i])
+		return (free_and_null(storage, NULL));
+	remains = ft_substr(storage, i + 1, ft_strlen(storage) - i - 1);
+	free(storage);
+	if (remains && !remains[0])
+		return (free_and_null(remains, NULL));
+	return (remains);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*leftover;
+	static char	*storage;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	leftover = read_to_leftover(fd, leftover);
-	if (!leftover)
+	storage = read_to_storage(fd, storage);
+	if (!storage)
 		return (NULL);
-	line = extract_line(leftover);
+	line = split_line(storage);
 	if (!line)
 	{
-		free(leftover);
-		leftover = NULL;
+		free(storage);
+		storage = NULL;
 		return (NULL);
 	}
-	leftover = update_leftover(leftover);
+	storage = trim_storage(storage);
 	return (line);
 }

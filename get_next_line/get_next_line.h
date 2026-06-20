@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 12:39:36 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/07 14:40:34 by seukim           ###   ########.fr       */
+/*   Updated: 2026/06/19 19:41:57 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_grow(char *buf, size_t len, size_t new_cap);
-char	*update_leftover(char *leftover);
 
 #endif
