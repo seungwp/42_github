@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 13:01:25 by seukim            #+#    #+#             */
-/*   Updated: 2026/07/19 17:41:56 by seukim           ###   ########.fr       */
+/*   Updated: 2026/07/19 20:17:47 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(void)
 	put_nbr(getpid());
 	write(1, "\n", 1);
 	while (1)
-		pause();
+		usleep(50);
 	return (0);
 }
 
