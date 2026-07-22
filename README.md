@@ -4,7 +4,7 @@
 
 | 프로젝트 | 개요 |
 | :--- | :--- |
-| [LaPiscine](./LaPiscine) | 입학 과정(피신) 과제 모음. `c00`~`c08`(C 기초~포인터, 구조체, 정적 라이브러리), `shell00`(셸 기초), `final_exam`(시험 문제 풀이) |
+| [LaPiscine](./LaPiscine) | 입학 과정(피신) 과제 모음. `c00`–`c08`(C 기초부터 포인터, 구조체, 정적 라이브러리까지), `shell00`(셸 기초), `final_exam`(시험 문제 풀이) |
 | [libft](./libft) | 표준 C 라이브러리 함수와 연결 리스트 함수를 직접 구현한 나만의 정적 라이브러리 |
 | [ft_printf](./ft_printf) | 가변 인자를 이용한 `printf` 재구현. `%c %s %p %d %i %u %x %X %%` 지원 |
 | [get_next_line](./get_next_line) | 정적 변수로 버퍼를 유지하며 fd에서 한 줄씩 읽어오는 함수 |
