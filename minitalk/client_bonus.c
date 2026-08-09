@@ -1,17 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 15:19:25 by seukim            #+#    #+#             */
-/*   Updated: 2026/08/09 20:58:49 by seukim           ###   ########.fr       */
+/*   Updated: 2026/08/09 21:03:00 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
+
+static volatile sig_atomic_t	g_ack = 0;
+
+static void	ack_handler(int sig)
+{
+	g_ack = sig;
+}
 
 static void	send_char(int pid, unsigned char c)
 {
@@ -20,11 +27,13 @@ static void	send_char(int pid, unsigned char c)
 	i = 7;
 	while (i >= 0)
 	{
+		g_ack = 0;
 		if (((c >> i) & 1) == 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(300);
+		while (g_ack == 0)
+			usleep(50);
 		i--;
 	}
 }
@@ -50,22 +59,26 @@ static int	parse_pid(char *s)
 	return ((int)pid);
 }
 
-static void	send_string(int pid, char *str)
+static int	setup_signals(void)
 {
-	int	i;
+	struct sigaction	sa;
 
-	i = 0;
-	while (str[i])
-	{
-		send_char(pid, (unsigned char)str[i]);
-		i++;
-	}
-	send_char(pid, '\0');
+	sa.sa_handler = ack_handler;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+		return (0);
+	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+		return (0);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	int	pid;
+	int	i;
 
 	if (argc != 3)
 	{
@@ -78,6 +91,13 @@ int	main(int argc, char **argv)
 		write(2, "Error: invalid pid or server not found\n", 38);
 		return (1);
 	}
-	send_string(pid, argv[2]);
+	if (!setup_signals())
+		return (1);
+	i = 0;
+	while (argv[2][i])
+		send_char(pid, (unsigned char)argv[2][i++]);
+	send_char(pid, '\0');
+	if (g_ack == SIGUSR2)
+		write(1, "Message received by server\n", 27);
 	return (0);
 }

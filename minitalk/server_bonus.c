@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 13:01:25 by seukim            #+#    #+#             */
-/*   Updated: 2026/08/09 21:02:41 by seukim           ###   ########.fr       */
+/*   Updated: 2026/08/09 20:58:52 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ static void	put_nbr(int n)
 	write(1, &c, 1);
 }
 
-static void	reset_state(int pid)
-{
-	g_state.pid = pid;
-	g_state.c = 0;
-	g_state.bits = 0;
-}
-
 static void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	int	client;
@@ -48,24 +41,26 @@ static void	sig_handler(int sig, siginfo_t *info, void *context)
 	if (client <= 0)
 		return ;
 	if (client != g_state.pid)
-		reset_state(client);
+	{
+		g_state.pid = client;
+		g_state.c = 0;
+		g_state.bits = 0;
+	}
 	g_state.c = g_state.c << 1;
 	if (sig == SIGUSR2)
 		g_state.c = g_state.c | 1;
 	g_state.bits++;
 	if (g_state.bits < 8)
-		return ;
+		return (kill(client, SIGUSR1), (void)0);
 	g_state.bits = 0;
 	if (g_state.c == '\0')
-	{
-		g_state.pid = 0;
-		return ;
-	}
+		return (g_state.pid = 0, kill(client, SIGUSR2), (void)0);
 	write(1, &g_state.c, 1);
 	g_state.c = 0;
+	kill(client, SIGUSR1);
 }
 
-static int	setup_signals(void)
+int	main(void)
 {
 	struct sigaction	sa;
 
@@ -75,15 +70,8 @@ static int	setup_signals(void)
 	sigaddset(&sa.sa_mask, SIGUSR1);
 	sigaddset(&sa.sa_mask, SIGUSR2);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
-		return (0);
+		return (1);
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
-		return (0);
-	return (1);
-}
-
-int	main(void)
-{
-	if (!setup_signals())
 		return (1);
 	write(1, "Server PID: ", 12);
 	put_nbr(getpid());
