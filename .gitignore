@@ -1,0 +1,4 @@
+*.o
+*.a
+minilibx*/
+so_long/so_long
