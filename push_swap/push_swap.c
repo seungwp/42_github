@@ -14,8 +14,27 @@
 
 int	main(int argc, char **argv)
 {
+	t_stack	a;
+	t_stack	b;
+	int		size;
+
 	if (argc < 2)
 		return (0);
-	(void)argv;
+	a.top = NULL;
+	a.bottom = NULL;
+	b.top = NULL;
+	b.bottom = NULL;
+	if (!parse_args(argc, argv, &a))
+		error_exit(&a, &b);
+	size = stack_size(&a);
+	if (!stack_is_sorted(&a))
+	{
+		if (size <= 3)
+			sort_small(&a, &b, size);
+		else
+			sort_big(&a, &b);
+	}
+	stack_clear(&a);
+	stack_clear(&b);
 	return (0);
 }

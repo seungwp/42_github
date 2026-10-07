@@ -11,3 +11,55 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+long	ft_atol(const char *str)
+{
+	long	res;
+	int		sign;
+
+	res = 0;
+	sign = 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - '0');
+		if (res > (long)INT_MAX + 1)
+			return (LONG_MAX);
+		str++;
+	}
+	return (res * sign);
+}
+
+int	is_valid_number(const char *str)
+{
+	if (*str == '-' || *str == '+')
+		str++;
+	if (!*str)
+		return (0);
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
+int	has_duplicate(t_stack *a, long value)
+{
+	t_node	*cur;
+
+	cur = a->top;
+	while (cur)
+	{
+		if (cur->value == value)
+			return (1);
+		cur = cur->next;
+	}
+	return (0);
+}
