@@ -21,11 +21,7 @@
 typedef struct s_node
 {
 	int				value;
-	int				index;
-	int				push_cost;
-	int				above_median;
-	int				cheapest;
-	struct s_node	*target_node;
+	int				rank;
 	struct s_node	*prev;
 	struct s_node	*next;
 }					t_node;
@@ -35,8 +31,6 @@ typedef struct s_stack
 	t_node			*top;
 	t_node			*bottom;
 }					t_stack;
-
-int			main(int argc, char **argv);
 
 int			parse_args(int argc, char **argv, t_stack *a);
 int			fill_stack(t_stack *a, char **nums);
@@ -56,34 +50,20 @@ void		stack_clear(t_stack *stack);
 int			stack_is_sorted(t_stack *stack);
 t_node		*stack_min_node(t_stack *stack);
 t_node		*stack_max_node(t_stack *stack);
-void		set_index(t_stack *stack);
+int			node_position(t_stack *stack, t_node *node);
+void		assign_rank(t_stack *stack);
 
 void		sa(t_stack *a);
-void		sb(t_stack *b);
-void		ss(t_stack *a, t_stack *b);
-
 void		pa(t_stack *a, t_stack *b);
 void		pb(t_stack *a, t_stack *b);
-
 void		ra(t_stack *a);
-void		rb(t_stack *b);
-void		rr(t_stack *a, t_stack *b);
-
 void		rra(t_stack *a);
-void		rrb(t_stack *b);
-void		rrr(t_stack *a, t_stack *b);
 
 void		sort_small(t_stack *a, t_stack *b, int size);
 void		sort_two(t_stack *a);
 void		sort_three(t_stack *a);
+void		sort_five(t_stack *a, t_stack *b);
 
 void		sort_big(t_stack *a, t_stack *b);
-void		prep_to_b(t_stack *a, t_stack *b);
-void		final_rotate(t_stack *a);
-
-void		set_target_a(t_stack *a, t_stack *b);
-void		set_cost(t_stack *a, t_stack *b);
-t_node		*find_cheapest(t_stack *b);
-void		move_cheapest(t_stack *a, t_stack *b);
 
 #endif

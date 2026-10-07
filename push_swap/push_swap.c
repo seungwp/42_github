@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	size = stack_size(&a);
 	if (!stack_is_sorted(&a))
 	{
-		if (size <= 3)
+		if (size <= 5)
 			sort_small(&a, &b, size);
 		else
 			sort_big(&a, &b);

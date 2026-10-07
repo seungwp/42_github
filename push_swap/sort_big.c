@@ -12,55 +12,40 @@
 
 #include "push_swap.h"
 
-void	prep_to_b(t_stack *a, t_stack *b)
+static int	count_bits(int max_rank)
 {
-	t_node	*cur;
-	long	avg;
-	int		size;
+	int	bits;
 
-	size = stack_size(a);
-	avg = 0;
-	cur = a->top;
-	while (cur)
-	{
-		avg += cur->value;
-		cur = cur->next;
-	}
-	avg /= size;
-	while (size-- > 3)
-	{
-		pb(a, b);
-		if (b->top->next && b->top->value < avg)
-			rb(b);
-	}
-	sort_three(a);
-}
-
-void	final_rotate(t_stack *a)
-{
-	t_node	*min;
-
-	set_index(a);
-	min = stack_min_node(a);
-	while (a->top != min)
-	{
-		if (min->above_median)
-			ra(a);
-		else
-			rra(a);
-	}
+	bits = 0;
+	while ((max_rank >> bits) != 0)
+		bits++;
+	return (bits);
 }
 
 void	sort_big(t_stack *a, t_stack *b)
 {
-	prep_to_b(a, b);
-	while (b->top)
+	int	size;
+	int	bits;
+	int	bit;
+	int	i;
+
+	assign_rank(a);
+	size = stack_size(a);
+	bits = count_bits(size - 1);
+	bit = 0;
+	while (bit < bits)
 	{
-		set_index(a);
-		set_index(b);
-		set_target_a(a, b);
-		set_cost(a, b);
-		move_cheapest(a, b);
+		i = 0;
+		while (i < size)
+		{
+			if (((a->top->rank >> bit) & 1) == 0)
+				pb(a, b);
+			else
+				ra(a);
+			i++;
+		}
+		while (b->top)
+			pa(a, b);
+		bit++;
 	}
-	final_rotate(a);
 }

@@ -31,11 +31,32 @@ void	sort_three(t_stack *a)
 		sa(a);
 }
 
+void	sort_five(t_stack *a, t_stack *b)
+{
+	t_node	*min;
+
+	while (stack_size(a) > 3)
+	{
+		min = stack_min_node(a);
+		if (node_position(a, min) <= stack_size(a) / 2)
+			while (a->top != min)
+				ra(a);
+		else
+			while (a->top != min)
+				rra(a);
+		pb(a, b);
+	}
+	sort_three(a);
+	while (b->top)
+		pa(a, b);
+}
+
 void	sort_small(t_stack *a, t_stack *b, int size)
 {
-	(void)b;
 	if (size == 2)
 		sort_two(a);
 	else if (size == 3)
 		sort_three(a);
+	else
+		sort_five(a, b);
 }

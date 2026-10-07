@@ -30,8 +30,7 @@ SRCS = push_swap.c \
 		ops_rotate.c \
 		ops_rrotate.c \
 		sort_small.c \
-		sort_big.c \
-		greedy.c
+		sort_big.c
 
 OBJS = $(SRCS:.c=.o)
 
