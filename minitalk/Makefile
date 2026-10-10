@@ -34,16 +34,16 @@ $(SERVER_BONUS): server_bonus.o
 $(CLIENT_BONUS): client_bonus.o
 	$(CC) $(CFLAGS) client_bonus.o -o $(CLIENT_BONUS)
 
-server.o: server.c
+server.o: server.c minitalk.h
 	$(CC) $(CFLAGS) -c server.c -o server.o
 
-client.o: client.c
+client.o: client.c minitalk.h
 	$(CC) $(CFLAGS) -c client.c -o client.o
 
-server_bonus.o: server_bonus.c
+server_bonus.o: server_bonus.c minitalk.h
 	$(CC) $(CFLAGS) -c server_bonus.c -o server_bonus.o
 
-client_bonus.o: client_bonus.c
+client_bonus.o: client_bonus.c minitalk.h
 	$(CC) $(CFLAGS) -c client_bonus.c -o client_bonus.o
 
 clean:

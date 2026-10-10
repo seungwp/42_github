@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
+#include "minitalk.h"
 
 static volatile sig_atomic_t	g_ack = 0;
 
@@ -23,6 +22,7 @@ static void	ack_handler(int sig)
 static void	send_char(int pid, unsigned char c)
 {
 	int	i;
+	int	waited;
 
 	i = 7;
 	while (i >= 0)
@@ -32,8 +32,17 @@ static void	send_char(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		while (g_ack == 0)
-			usleep(50);
+		waited = 0;
+		while (g_ack == 0 && waited < ACK_TIMEOUT)
+		{
+			usleep(100);
+			waited++;
+		}
+		if (g_ack == 0)
+		{
+			write(2, "Error: server not responding\n", 29);
+			exit(1);
+		}
 		i--;
 	}
 }
@@ -82,13 +91,13 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		write(2, "Error: usage is ./client <pid> <message>\n", 40);
+		write(2, "Error: usage is ./client <pid> <message>\n", 41);
 		return (1);
 	}
 	pid = parse_pid(argv[1]);
 	if (pid == -1 || kill(pid, 0) == -1)
 	{
-		write(2, "Error: invalid pid or server not found\n", 38);
+		write(2, "Error: invalid pid or server not found\n", 39);
 		return (1);
 	}
 	if (!setup_signals())

@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
-
-typedef struct s_state
-{
-	unsigned char	c;
-	int				bits;
-	int				pid;
-}	t_state;
+#include "minitalk.h"
 
 static t_state	g_state;
 
@@ -32,6 +24,13 @@ static void	put_nbr(int n)
 	write(1, &c, 1);
 }
 
+static void	reset_state(int pid)
+{
+	g_state.pid = pid;
+	g_state.c = 0;
+	g_state.bits = 0;
+}
+
 static void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	int	client;
@@ -41,22 +40,23 @@ static void	sig_handler(int sig, siginfo_t *info, void *context)
 	if (client <= 0)
 		return ;
 	if (client != g_state.pid)
-	{
-		g_state.pid = client;
-		g_state.c = 0;
-		g_state.bits = 0;
-	}
+		reset_state(client);
 	g_state.c = g_state.c << 1;
 	if (sig == SIGUSR2)
 		g_state.c = g_state.c | 1;
 	g_state.bits++;
-	if (g_state.bits < 8)
-		return (kill(client, SIGUSR1), (void)0);
-	g_state.bits = 0;
-	if (g_state.c == '\0')
-		return (g_state.pid = 0, kill(client, SIGUSR2), (void)0);
-	write(1, &g_state.c, 1);
-	g_state.c = 0;
+	if (g_state.bits == 8 && g_state.c == '\0')
+	{
+		write(1, "\n", 1);
+		reset_state(0);
+		kill(client, SIGUSR2);
+		return ;
+	}
+	if (g_state.bits == 8)
+	{
+		write(1, &g_state.c, 1);
+		reset_state(client);
+	}
 	kill(client, SIGUSR1);
 }
 

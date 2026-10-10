@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
-
-typedef struct s_state
-{
-	unsigned char	c;
-	int				bits;
-	int				pid;
-}	t_state;
+#include "minitalk.h"
 
 static t_state	g_state;
 
@@ -53,16 +45,17 @@ static void	sig_handler(int sig, siginfo_t *info, void *context)
 	if (sig == SIGUSR2)
 		g_state.c = g_state.c | 1;
 	g_state.bits++;
-	if (g_state.bits < 8)
-		return ;
-	g_state.bits = 0;
-	if (g_state.c == '\0')
+	if (g_state.bits == 8 && g_state.c == '\0')
 	{
-		g_state.pid = 0;
-		return ;
+		write(1, "\n", 1);
+		reset_state(0);
 	}
-	write(1, &g_state.c, 1);
-	g_state.c = 0;
+	else if (g_state.bits == 8)
+	{
+		write(1, &g_state.c, 1);
+		reset_state(client);
+	}
+	kill(client, SIGUSR1);
 }
 
 static int	setup_signals(void)
