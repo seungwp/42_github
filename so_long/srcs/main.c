@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 01:38:10 by seukim            #+#    #+#             */
-/*   Updated: 2026/10/10 18:02:30 by seukim           ###   ########.fr       */
+/*   Updated: 2026/10/10 20:51:23 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ static int	check_ext(char *path)
 	return (1);
 }
 
-static int	key_press(int keycode, t_game *game)
-{
-	if (keycode == KEY_ESC)
-		close_game(game);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -42,14 +35,22 @@ int	main(int argc, char **argv)
 		error_exit(&game, "Usage: ./so_long <map.ber>");
 	if (!check_ext(argv[1]))
 		error_exit(&game, "Map file must have a .ber extension");
+	read_map(&game, argv[1]);
+	check_map(&game);
+	check_path(&game);
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		error_exit(&game, "Failed to initialize mlx");
-	game.win = mlx_new_window(game.mlx, 640, 480, "so_long");
+	check_screen(&game);
+	game.win = mlx_new_window(game.mlx, game.width * TILE,
+			game.height * TILE, "so_long");
 	if (!game.win)
 		error_exit(&game, "Failed to create window");
+	load_images(&game);
+	render(&game);
 	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);
+	mlx_hook(game.win, 12, 1L << 15, render, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

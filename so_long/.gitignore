@@ -1,3 +1,13 @@
 *.o
 *.a
+obj/
 so_long
+*.pdf
+*.jpg
+*.png
+gen.sh
+minilibx-linux/makefile.gen
+minilibx-linux/Makefile.gen
+minilibx-linux/test/makefile.gen
+minilibx-linux/test/Makefile.gen
+minilibx-linux/test/mlx-test

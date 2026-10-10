@@ -6,7 +6,7 @@
 /*   By: seukim <seukim@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 01:37:02 by seukim            #+#    #+#             */
-/*   Updated: 2026/10/10 18:02:32 by seukim           ###   ########.fr       */
+/*   Updated: 2026/10/10 20:50:30 by seukim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define TILE 32
+# define TILE 64
+# define BUF_SIZE 1024
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
@@ -54,5 +55,22 @@ void	free_map(char **map);
 void	cleanup(t_game *game);
 void	error_exit(t_game *game, char *msg);
 int		close_game(t_game *game);
+
+/* map_read.c */
+void	read_map(t_game *game, char *path);
+
+/* map_check.c */
+void	check_map(t_game *game);
+
+/* path_check.c */
+void	check_path(t_game *game);
+
+/* render.c */
+void	load_images(t_game *game);
+void	check_screen(t_game *game);
+int		render(t_game *game);
+
+/* move.c */
+int		key_press(int keycode, t_game *game);
 
 #endif

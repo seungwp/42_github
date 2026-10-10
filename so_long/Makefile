@@ -4,7 +4,12 @@ CFLAGS	= -Wall -Wextra -Werror
 INC		= -Iincludes -Iminilibx-linux -Ilibft
 
 SRCS	= srcs/main.c \
-		  srcs/exit.c
+		  srcs/exit.c \
+		  srcs/map_read.c \
+		  srcs/map_check.c \
+		  srcs/path_check.c \
+		  srcs/render.c \
+		  srcs/move.c
 OBJS	= $(SRCS:.c=.o)
 
 LIBFT	= libft/libft.a
