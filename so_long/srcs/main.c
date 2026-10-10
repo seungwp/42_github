@@ -37,11 +37,11 @@ int	main(int argc, char **argv)
 		error_exit(&game, "Map file must have a .ber extension");
 	read_map(&game, argv[1]);
 	check_map(&game);
-	check_path(&game);
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		error_exit(&game, "Failed to initialize mlx");
 	check_screen(&game);
+	check_path(&game);
 	game.win = mlx_new_window(game.mlx, game.width * TILE,
 			game.height * TILE, "so_long");
 	if (!game.win)
