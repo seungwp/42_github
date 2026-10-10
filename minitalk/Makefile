@@ -13,12 +13,15 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+NAME = minitalk
 SERVER = server
 CLIENT = client
 SERVER_BONUS = server_bonus
 CLIENT_BONUS = client_bonus
 
-all: $(SERVER) $(CLIENT)
+all: $(NAME)
+
+$(NAME): $(SERVER) $(CLIENT)
 
 bonus: $(SERVER_BONUS) $(CLIENT_BONUS)
 
@@ -54,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re $(NAME)
