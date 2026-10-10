@@ -3,7 +3,8 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 INC		= -Iincludes -Iminilibx-linux -Ilibft
 
-SRCS	= srcs/main.c
+SRCS	= srcs/main.c \
+		  srcs/exit.c
 OBJS	= $(SRCS:.c=.o)
 
 LIBFT	= libft/libft.a
