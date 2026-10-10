@@ -155,7 +155,7 @@ radix는 원소마다 비트 단계마다 무조건 한 번씩 연산하므로 �
 | `sort_utils.c` | `stack_is_sorted` `stack_min_node` `stack_max_node` `node_position` `assign_rank` |
 | `ops_swap.c` `ops_push.c` `ops_rotate.c` `ops_rrotate.c` | `sa` `pa` `pb` `ra` `rra` |
 | `sort_small.c` | `sort_two` `sort_three` `sort_min_push` `sort_small` |
-| `sort_big.c` | `sort_big` `count_bits` |
+| `sort_big.c` | `sort_big` |
 
 ### 결과
 

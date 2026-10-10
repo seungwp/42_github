@@ -12,28 +12,16 @@
 
 #include "push_swap.h"
 
-static int	count_bits(int max_rank)
-{
-	int	bits;
-
-	bits = 0;
-	while ((max_rank >> bits) != 0)
-		bits++;
-	return (bits);
-}
-
 void	sort_big(t_stack *a, t_stack *b)
 {
 	int	size;
-	int	bits;
 	int	bit;
 	int	i;
 
 	assign_rank(a);
 	size = stack_size(a);
-	bits = count_bits(size - 1);
 	bit = 0;
-	while (bit < bits)
+	while (((size - 1) >> bit) != 0)
 	{
 		i = 0;
 		while (i < size)

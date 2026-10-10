@@ -48,7 +48,6 @@ int	fill_stack(t_stack *a, char **nums)
 int	parse_args(int argc, char **argv, t_stack *a)
 {
 	char	**nums;
-	int		ok;
 	int		i;
 
 	i = 1;
@@ -57,10 +56,12 @@ int	parse_args(int argc, char **argv, t_stack *a)
 		nums = ft_split(argv[i], ' ');
 		if (!nums)
 			return (0);
-		ok = (nums[0] != NULL && fill_stack(a, nums));
-		free_split(nums);
-		if (!ok)
+		if (!nums[0] || !fill_stack(a, nums))
+		{
+			free_split(nums);
 			return (0);
+		}
+		free_split(nums);
 		i++;
 	}
 	return (1);

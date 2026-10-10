@@ -19,8 +19,10 @@ t_node	*stack_new_node(int value)
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	ft_bzero(node, sizeof(t_node));
 	node->value = value;
+	node->rank = 0;
+	node->prev = NULL;
+	node->next = NULL;
 	return (node);
 }
 

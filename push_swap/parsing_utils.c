@@ -28,7 +28,7 @@ long	ft_atol(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		res = res * 10 + (*str - '0');
-		if (res > (long)INT_MAX + 1)
+		if (res * sign > INT_MAX || res * sign < INT_MIN)
 			return (LONG_MAX);
 		str++;
 	}

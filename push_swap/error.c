@@ -14,10 +14,8 @@
 
 void	error_exit(t_stack *a, t_stack *b)
 {
-	if (a)
-		stack_clear(a);
-	if (b)
-		stack_clear(b);
+	stack_clear(a);
+	stack_clear(b);
 	write(2, "Error\n", 6);
 	exit(1);
 }
