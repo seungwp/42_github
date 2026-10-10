@@ -36,14 +36,6 @@ sa
 | 정수가 아닌 인자 / `int` 범위 초과 / 중복 | 표준 에러에 `Error\n` |
 | 정상 입력 | 연산을 `\n`으로 구분해 출력 |
 
-### 연산 횟수 기준
-| | 100% | 최소 통과 (80%) |
-| --- | --- | --- |
-| 100개 | < 700 | < 1100 |
-| 500개 | ≤ 5500 | < 8500 |
-
-(최소 통과 조합은 이 외에도 몇 가지가 있습니다. 과제 원문 참고)
-
 ### 공통 규칙
 - Norm 준수, 전역 변수 금지
 - 메모리 누수 / 비정상 종료(segfault, double free 등) 금지
@@ -60,8 +52,8 @@ sa
 main
  ├─ parse_args      인자 → 검증 → 스택 a 채우기 (실패 시 error_exit)
  ├─ stack_is_sorted 이미 정렬돼 있으면 아무것도 안 하고 종료
- ├─ n ≤ 5  → sort_small
- │  n ≥ 6  → sort_big (radix)
+ ├─ n ≤ 40 → sort_small
+ │  n ≥ 41 → sort_big (radix)
  └─ stack_clear     두 스택 해제
 ```
 
@@ -116,12 +108,12 @@ typedef struct s_stack
 1. 최댓값이 top이면 `ra`, 가운데면 `rra` → 최댓값을 bottom으로
 2. 위 두 개가 뒤집혀 있으면 `sa`
 
-**4~5개** (`sort_five`, 최대 10연산)
+**4~40개** (`sort_min_push`, 5개는 최대 10연산)
 1. 최솟값을 짧은 쪽 방향(`ra` 또는 `rra`)으로 돌려 top에 올리고 `pb`
 2. 3개 남을 때까지 반복 → `sort_three`
 3. `pa`로 전부 되돌림 (작은 값부터 다시 위에 쌓임)
 
-**6개 이상** (`sort_big`, 2진수 LSD radix sort)
+**41개 이상** (`sort_big`, 2진수 LSD radix sort)
 1. `assign_rank`: 모든 값을 순위(0 ~ n-1)로 바꿈 → 음수·큰 수도 작은 0 이상 정수가 됨
 2. 가장 낮은 비트부터 한 비트씩:
    - `a`를 정확히 n번 확인하면서 그 비트가 **0이면 `pb`, 1이면 `ra`**
@@ -139,6 +131,17 @@ typedef struct s_stack
 연산 수 = `n × 비트 수 + (각 비트 단계에서 비트가 0인 원소 수의 합)`.
 순위 집합(0 ~ n-1)은 입력 순서와 무관하므로 **연산 수는 항상 같습니다.**
 
+**왜 40개에서 나누나?**
+radix는 원소마다 비트 단계마다 무조건 한 번씩 연산하므로 원소가 적으면 손해이고(5개 → 25회), 최솟값 빼기 방식은 연산 수가 n²에 비례해 커집니다.
+랜덤 입력으로 비교하면 42개까지는 최솟값 빼기가 radix보다 많았던 적이 없고, 43개부터 역전되는 경우가 생깁니다. 여유를 두고 40을 경계로 잡았습니다.
+
+| n | 최솟값 빼기 (평균 / 최대) | radix |
+| --- | --- | --- |
+| 5 | ≤ 10 | 25 |
+| 20 | 86 / 106 | 160 |
+| 40 | 281 / 347 | 380 |
+| 50 | 412 / 535 | 467 |
+
 ### 파일 구성
 
 | 파일 | 함수 |
@@ -151,7 +154,7 @@ typedef struct s_stack
 | `stack_utils.c` | `stack_new_node` `stack_add_top` `stack_add_bottom` `stack_size` `stack_clear` |
 | `sort_utils.c` | `stack_is_sorted` `stack_min_node` `stack_max_node` `node_position` `assign_rank` |
 | `ops_swap.c` `ops_push.c` `ops_rotate.c` `ops_rrotate.c` | `sa` `pa` `pb` `ra` `rra` |
-| `sort_small.c` | `sort_two` `sort_three` `sort_five` `sort_small` |
+| `sort_small.c` | `sort_two` `sort_three` `sort_min_push` `sort_small` |
 | `sort_big.c` | `sort_big` `count_bits` |
 
 ### 결과

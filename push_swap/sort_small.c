@@ -31,7 +31,7 @@ void	sort_three(t_stack *a)
 		sa(a);
 }
 
-void	sort_five(t_stack *a, t_stack *b)
+void	sort_min_push(t_stack *a, t_stack *b)
 {
 	t_node	*min;
 
@@ -58,5 +58,5 @@ void	sort_small(t_stack *a, t_stack *b, int size)
 	else if (size == 3)
 		sort_three(a);
 	else
-		sort_five(a, b);
+		sort_min_push(a, b);
 }

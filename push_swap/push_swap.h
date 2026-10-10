@@ -62,7 +62,7 @@ void		rra(t_stack *a);
 void		sort_small(t_stack *a, t_stack *b, int size);
 void		sort_two(t_stack *a);
 void		sort_three(t_stack *a);
-void		sort_five(t_stack *a, t_stack *b);
+void		sort_min_push(t_stack *a, t_stack *b);
 
 void		sort_big(t_stack *a, t_stack *b);
 
